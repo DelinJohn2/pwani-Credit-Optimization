@@ -1,0 +1,40 @@
+2025-07-17 10:57:09 [ERROR] sql_updater_supplier: supplier_metadata_insert failed: 'supplierId'
+2025-07-17 10:57:20 [ERROR] sql_updater_supplier: supplier_metadata_insert failed: 'supplierId'
+2025-07-17 10:58:24 [ERROR] sql_updater_supplier: supplier_metadata_insert failed: (sqlite3.IntegrityError) NOT NULL constraint failed: suppliers.vendorId
+[SQL: INSERT INTO suppliers ("vendorId", name, email, phone, "supplierType", "creditTerms", "createAt", "modifiedAt", "createdBy", "modifiedBy") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "supplierId"]
+[parameters: (None, 'Delfin SRL', 'info@delfin.it', '580688,,', 'IMPORT SUPPLIER', '100% Advance', None, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-17 11:22:30 [ERROR] sql_updater_supplier: supplier_metadata_insert failed: (sqlite3.IntegrityError) NOT NULL constraint failed: suppliers.vendorId
+[SQL: INSERT INTO suppliers ("vendorId", name, email, phone, "supplierType", "creditTerms", "createAt", "modifiedAt", "createdBy", "modifiedBy") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "supplierId"]
+[parameters: (None, 'Delfin SRL', 'info@delfin.it', '580688,,', 'IMPORT SUPPLIER', '100% Advance', None, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-17 11:25:19 [ERROR] sql_updater_supplier: supplier_metadata_insert failed: (sqlite3.IntegrityError) NOT NULL constraint failed: suppliers.vendorId
+[SQL: INSERT INTO suppliers ("vendorId", name, email, phone, "supplierType", "creditTerms", "createAt", "modifiedAt", "createdBy", "modifiedBy") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "supplierId"]
+[parameters: (None, 'Delfin SRL', 'info@delfin.it', '580688,,', 'IMPORT SUPPLIER', '100% Advance', None, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-17 11:26:44 [ERROR] sql_updater_supplier: supplier_metadata_insert failed: (sqlite3.IntegrityError) NOT NULL constraint failed: suppliers.vendorId
+[SQL: INSERT INTO suppliers ("vendorId", name, email, phone, "supplierType", "creditTerms", "createAt", "modifiedAt", "createdBy", "modifiedBy") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "supplierId"]
+[parameters: (None, 'Delfin SRL', 'info@delfin.it', '580688,,', 'IMPORT SUPPLIER', '100% Advance', None, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-17 11:27:42 [ERROR] sql_updater_supplier: supplier_metadata_insert failed: (sqlite3.IntegrityError) NOT NULL constraint failed: suppliers.vendorId
+[SQL: INSERT INTO suppliers ("vendorId", name, email, phone, "supplierType", "creditTerms", "createAt", "modifiedAt", "createdBy", "modifiedBy") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "supplierId"]
+[parameters: (None, 'Delfin SRL', 'info@delfin.it', '580688,,', 'IMPORT SUPPLIER', '100% Advance', None, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-17 11:31:37 [INFO] sql_updater_supplier: Inserted 52 customer metadata records.
+2025-07-17 11:40:49 [INFO] sql_updater_supplier: Inserted 52 customer metadata records.
+2025-07-17 11:42:15 [ERROR] sql_updater_supplier: supplier_metadata_insert failed: 'function' object has no attribute 'iterrows'
+2025-07-17 11:42:44 [INFO] sql_updater_supplier: Inserted 21 customer metadata records.
+2025-07-17 13:31:10 [INFO] sql_updater_supplier: No customer metadata records to insert.
+2025-07-17 13:33:21 [INFO] sql_updater_supplier: No customer metadata records to insert.
+2025-07-17 13:33:46 [INFO] sql_updater_supplier: No customer metadata records to insert.
+2025-07-17 13:39:54 [INFO] sql_updater_supplier: No customer metadata records to insert.
+2025-07-17 13:42:28 [INFO] sql_updater_supplier: No customer metadata records to insert.
+2025-07-17 13:43:30 [INFO] sql_updater_supplier: No customer metadata records to insert.
+2025-07-17 14:36:51 [INFO] sql_updater_supplier: No customer metadata records to insert.
+2025-07-17 14:36:51 [ERROR] sql_updater_supplier: customer_offer_insert failed: 'material'
+2025-07-17 15:03:09 [INFO] sql_updater_supplier: Inserted 21 customer metadata records.
+2025-07-17 15:03:09 [INFO] sql_updater_supplier: Inserted 78 customer offer records.
+2025-07-17 17:22:18 [INFO] sql_updater_supplier: Inserted 21 customer metadata records.
+2025-07-17 17:22:18 [INFO] sql_updater_supplier: Inserted 78 customer offer records.
+2025-07-17 21:41:08 [INFO] sql_updater_supplier: Inserted 7 customer metadata records.
+2025-07-17 21:41:09 [INFO] sql_updater_supplier: Inserted 10 customer offer records.

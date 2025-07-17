@@ -1,0 +1,51 @@
+2025-07-15 18:04:19 [ERROR] Customer_offer: Initialization failed: DataFetcherOracleCustomer() takes no arguments
+2025-07-15 18:05:14 [ERROR] Customer_offer: Initialization failed: DataFetcherLocalCustomer.__init__() missing 1 required positional argument: 'engine'
+2025-07-15 18:06:26 [ERROR] Customer_offer: output formatter stopped :'DataFetcherOracleCustomer' object has no attribute 'connect'
+2025-07-15 18:07:03 [ERROR] Customer_offer: ensure_customers_in_db failed: (sqlite3.IntegrityError) NOT NULL constraint failed: customers.customerKey
+[SQL: INSERT INTO customers ("customerNumber", "customerKey", name, email, phone, "customerType", "creditTerms", "createAt", "modifiedAt", "createdBy", "modifiedBy") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "customerId"]
+[parameters: (86678.0, None, 'Magunas Super Stores(K) Ltd', 'payables@magunas.co.ke, financemanager@magunas.co.ke', None, 'ORGANIZATION', 30, None, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-15 18:07:03 [ERROR] Customer_offer: get_enriched_invoice_data failed: (sqlite3.IntegrityError) NOT NULL constraint failed: customers.customerKey
+[SQL: INSERT INTO customers ("customerNumber", "customerKey", name, email, phone, "customerType", "creditTerms", "createAt", "modifiedAt", "createdBy", "modifiedBy") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "customerId"]
+[parameters: (86678.0, None, 'Magunas Super Stores(K) Ltd', 'payables@magunas.co.ke, financemanager@magunas.co.ke', None, 'ORGANIZATION', 30, None, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-15 18:07:03 [ERROR] Customer_offer: output formatter stopped :(sqlite3.IntegrityError) NOT NULL constraint failed: customers.customerKey
+[SQL: INSERT INTO customers ("customerNumber", "customerKey", name, email, phone, "customerType", "creditTerms", "createAt", "modifiedAt", "createdBy", "modifiedBy") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "customerId"]
+[parameters: (86678.0, None, 'Magunas Super Stores(K) Ltd', 'payables@magunas.co.ke, financemanager@magunas.co.ke', None, 'ORGANIZATION', 30, None, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-15 18:08:20 [ERROR] Customer_offer: ensure_customers_in_db failed: (sqlite3.IntegrityError) NOT NULL constraint failed: customers.customerKey
+[SQL: INSERT INTO customers ("customerNumber", "customerKey", name, email, phone, "customerType", "creditTerms", "createAt", "modifiedAt", "createdBy", "modifiedBy") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "customerId"]
+[parameters: (86678.0, None, 'Magunas Super Stores(K) Ltd', 'payables@magunas.co.ke, financemanager@magunas.co.ke', None, 'ORGANIZATION', 30, None, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-15 18:08:20 [ERROR] Customer_offer: get_enriched_invoice_data failed: (sqlite3.IntegrityError) NOT NULL constraint failed: customers.customerKey
+[SQL: INSERT INTO customers ("customerNumber", "customerKey", name, email, phone, "customerType", "creditTerms", "createAt", "modifiedAt", "createdBy", "modifiedBy") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "customerId"]
+[parameters: (86678.0, None, 'Magunas Super Stores(K) Ltd', 'payables@magunas.co.ke, financemanager@magunas.co.ke', None, 'ORGANIZATION', 30, None, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-15 18:08:20 [ERROR] Customer_offer: output formatter stopped :(sqlite3.IntegrityError) NOT NULL constraint failed: customers.customerKey
+[SQL: INSERT INTO customers ("customerNumber", "customerKey", name, email, phone, "customerType", "creditTerms", "createAt", "modifiedAt", "createdBy", "modifiedBy") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "customerId"]
+[parameters: (86678.0, None, 'Magunas Super Stores(K) Ltd', 'payables@magunas.co.ke, financemanager@magunas.co.ke', None, 'ORGANIZATION', 30, None, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-15 18:09:29 [ERROR] Customer_offer: ensure_customers_in_db failed: (sqlite3.IntegrityError) NOT NULL constraint failed: customers.customerKey
+[SQL: INSERT INTO customers ("customerNumber", "customerKey", name, email, phone, "customerType", "creditTerms", "createAt", "modifiedAt", "createdBy", "modifiedBy") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "customerId"]
+[parameters: (86678.0, None, 'Magunas Super Stores(K) Ltd', 'payables@magunas.co.ke, financemanager@magunas.co.ke', None, 'ORGANIZATION', 30, None, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-15 18:09:29 [ERROR] Customer_offer: get_enriched_invoice_data failed: (sqlite3.IntegrityError) NOT NULL constraint failed: customers.customerKey
+[SQL: INSERT INTO customers ("customerNumber", "customerKey", name, email, phone, "customerType", "creditTerms", "createAt", "modifiedAt", "createdBy", "modifiedBy") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "customerId"]
+[parameters: (86678.0, None, 'Magunas Super Stores(K) Ltd', 'payables@magunas.co.ke, financemanager@magunas.co.ke', None, 'ORGANIZATION', 30, None, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-15 18:09:29 [ERROR] Customer_offer: output formatter stopped :(sqlite3.IntegrityError) NOT NULL constraint failed: customers.customerKey
+[SQL: INSERT INTO customers ("customerNumber", "customerKey", name, email, phone, "customerType", "creditTerms", "createAt", "modifiedAt", "createdBy", "modifiedBy") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "customerId"]
+[parameters: (86678.0, None, 'Magunas Super Stores(K) Ltd', 'payables@magunas.co.ke, financemanager@magunas.co.ke', None, 'ORGANIZATION', 30, None, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-15 18:09:39 [ERROR] Customer_offer: output formatter stopped :'invoiceGrossValue'
+2025-07-15 18:35:43 [ERROR] Customer_offer: output formatter stopped :(sqlite3.IntegrityError) NOT NULL constraint failed: customerOffers.customerKey
+[SQL: INSERT INTO "customerOffers" ("invoiceDate", "invoiceNumber", "customerId", "customerKey", "creditAmount", "discountRate", "originalPaymentDate", "offeredPaymentDate", "totalInterest", "offerSentBy", "offerSentDate", "offerDecisionDate", "offerStatus", "createAt", "modifiedAt", "createdBy", "modifiedBy") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-06-13', 2541100709, 18, None, 345074.26, 4140.89112, '2025-07-13', '2025-06-28', 20704.4556, None, None, None, 'not_sent', '2025-07-15 18:35:42.935352', None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-16 16:43:47 [ERROR] Customer_offer: output formatter stopped :'>' not supported between instances of 'str' and 'int'
+2025-07-16 16:53:23 [ERROR] Customer_offer: output formatter stopped :unsupported operand type(s) for *: 'NoneType' and 'float'
+2025-07-16 17:00:45 [ERROR] Customer_offer: output formatter stopped :unsupported operand type(s) for *: 'NoneType' and 'float'
+2025-07-16 17:01:04 [ERROR] Customer_offer: output formatter stopped :unsupported operand type(s) for *: 'NoneType' and 'float'
+2025-07-16 17:01:42 [ERROR] Customer_offer: output formatter stopped :unsupported operand type(s) for *: 'NoneType' and 'float'
+2025-07-16 17:03:00 [ERROR] Customer_offer: output formatter stopped :unsupported operand type(s) for *: 'NoneType' and 'float'
+2025-07-16 17:03:08 [ERROR] Customer_offer: output formatter stopped :unsupported operand type(s) for *: 'NoneType' and 'float'

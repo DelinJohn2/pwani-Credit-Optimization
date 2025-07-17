@@ -1,0 +1,22 @@
+2025-07-15 18:07:03 [ERROR] sql_updater_customer: customer_metadata_insert failed: (sqlite3.IntegrityError) NOT NULL constraint failed: customers.customerKey
+[SQL: INSERT INTO customers ("customerNumber", "customerKey", name, email, phone, "customerType", "creditTerms", "createAt", "modifiedAt", "createdBy", "modifiedBy") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "customerId"]
+[parameters: (86678.0, None, 'Magunas Super Stores(K) Ltd', 'payables@magunas.co.ke, financemanager@magunas.co.ke', None, 'ORGANIZATION', 30, None, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-15 18:08:20 [ERROR] sql_updater_customer: customer_metadata_insert failed: (sqlite3.IntegrityError) NOT NULL constraint failed: customers.customerKey
+[SQL: INSERT INTO customers ("customerNumber", "customerKey", name, email, phone, "customerType", "creditTerms", "createAt", "modifiedAt", "createdBy", "modifiedBy") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "customerId"]
+[parameters: (86678.0, None, 'Magunas Super Stores(K) Ltd', 'payables@magunas.co.ke, financemanager@magunas.co.ke', None, 'ORGANIZATION', 30, None, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-15 18:09:29 [ERROR] sql_updater_customer: customer_metadata_insert failed: (sqlite3.IntegrityError) NOT NULL constraint failed: customers.customerKey
+[SQL: INSERT INTO customers ("customerNumber", "customerKey", name, email, phone, "customerType", "creditTerms", "createAt", "modifiedAt", "createdBy", "modifiedBy") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "customerId"]
+[parameters: (86678.0, None, 'Magunas Super Stores(K) Ltd', 'payables@magunas.co.ke, financemanager@magunas.co.ke', None, 'ORGANIZATION', 30, None, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-15 18:09:39 [INFO] sql_updater_customer: Inserted 47 customer metadata records.
+2025-07-15 18:35:43 [ERROR] sql_updater_customer: customer_offer_insert failed: (sqlite3.IntegrityError) NOT NULL constraint failed: customerOffers.customerKey
+[SQL: INSERT INTO "customerOffers" ("invoiceDate", "invoiceNumber", "customerId", "customerKey", "creditAmount", "discountRate", "originalPaymentDate", "offeredPaymentDate", "totalInterest", "offerSentBy", "offerSentDate", "offerDecisionDate", "offerStatus", "createAt", "modifiedAt", "createdBy", "modifiedBy") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('2025-06-13', 2541100709, 18, None, 345074.26, 4140.89112, '2025-07-13', '2025-06-28', 20704.4556, None, None, None, 'not_sent', '2025-07-15 18:35:42.935352', None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-15 18:37:00 [INFO] sql_updater_customer: Inserted 1 customer offer records.
+2025-07-16 16:43:47 [INFO] sql_updater_customer: Inserted 47 customer metadata records.
+2025-07-16 16:44:36 [INFO] sql_updater_customer: Inserted 1 customer offer records.
+2025-07-16 16:53:23 [INFO] sql_updater_customer: Inserted 232 customer metadata records.
+2025-07-16 17:04:25 [INFO] sql_updater_customer: Inserted 52 customer offer records.

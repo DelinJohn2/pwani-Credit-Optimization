@@ -1,0 +1,5 @@
+from .fetch_local_customer import DataFetcherLocalCustomer
+from .fetch_oracle_customer import DataFetcherOracleCustomer
+from .fetch_local_supplier import DataFetcherLocalSupplier
+from .fetch_oracle_supplier import DataFetcherOracleSupplier
+

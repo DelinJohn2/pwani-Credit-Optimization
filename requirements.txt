@@ -1,0 +1,8 @@
+sqlmodel
+pandas
+msgraph-sdk
+pandas
+oracledb
+cx_oracle
+fastapi
+uvicorn

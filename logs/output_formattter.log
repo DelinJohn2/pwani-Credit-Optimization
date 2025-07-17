@@ -1,0 +1,62 @@
+2025-06-30 05:44:17 [ERROR] output_formattter: output formatter stopped :unsupported operand type(s) for &: 'int' and 'InstrumentedAttribute'
+2025-06-30 05:45:37 [ERROR] output_formattter: output formatter stopped :unsupported operand type(s) for &: 'int' and 'InstrumentedAttribute'
+2025-06-30 05:45:54 [ERROR] output_formattter: output formatter stopped :Boolean value of this clause is not defined
+2025-06-30 05:47:44 [ERROR] output_formattter: output formatter stopped :(sqlite3.OperationalError) no such table: customer_invoice_data
+[SQL: SELECT customer_invoice_data.invoice_number, customer_invoice_data.invoice_date, customer_invoice_data.invoice_gross_vlaue, customer_invoice_data.invoice_currency, customer_invoice_data.payment_data, customer_invoice_data.updated_payment_date, customer_invoice_data.total_interest, customer_invoice_data.offer_amount, customer_invoice_data.request_sent, customer_invoice_data.request_accepted, customer_invoice_data.customer_id 
+FROM customer_invoice_data JOIN customer_master_data ON customer_master_data.id = customer_invoice_data.customer_id 
+WHERE customer_invoice_data.invoice_gross_vlaue > ? AND customer_invoice_data.request_sent = 0]
+[parameters: (10000,)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-06-30 14:49:43 [ERROR] output_formattter: output formatter stopped :can only concatenate str (not "Timedelta") to str
+2025-06-30 14:56:34 [ERROR] output_formattter: output formatter stopped :ambiguous column name: main.customer_invoice_data.invoice_number
+2025-06-30 15:26:07 [ERROR] output_formattter: output formatter stopped :unsupported operand type(s) for +: 'Timestamp' and 'NoneType'
+2025-06-30 15:39:33 [ERROR] output_formattter: output formatter stopped :unhashable type: 'set'
+2025-06-30 15:40:35 [ERROR] output_formattter: output formatter stopped :unhashable type: 'set'
+2025-06-30 16:17:14 [ERROR] output_formattter: output formatter stopped :'invoice_date'
+2025-06-30 16:17:24 [ERROR] output_formattter: output formatter stopped :'invoice_date'
+2025-06-30 16:17:46 [ERROR] output_formattter: output formatter stopped :'invoice_date'
+2025-06-30 16:19:15 [ERROR] output_formattter: output formatter stopped :The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025-06-30 16:19:20 [ERROR] output_formattter: output formatter stopped :The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025-06-30 16:19:56 [ERROR] output_formattter: output formatter stopped :The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025-06-30 16:20:01 [ERROR] output_formattter: output formatter stopped :The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025-06-30 16:22:11 [ERROR] output_formattter: output formatter stopped :The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2025-07-06 09:21:43 [ERROR] output_formattter: output formatter stopped :DataBaseReader.__init__() missing 1 required positional argument: 'engine'
+2025-07-06 09:23:48 [ERROR] output_formattter: output formatter stopped :DataBaseReader.__init__() missing 1 required positional argument: 'engine'
+2025-07-06 09:25:57 [ERROR] output_formattter: output formatter stopped :DataBaseReader.__init__() missing 1 required positional argument: 'engine'
+2025-07-06 09:26:06 [ERROR] output_formattter: output formatter stopped :'DataBaseReader' object has no attribute 'query_based_on_gross_value'
+2025-07-06 09:26:50 [ERROR] output_formattter: output formatter stopped :Textual column expression 'customer_invoice_data' should be explicitly declared with text('customer_invoice_data'), or use column('customer_invoice_data') for more specificity
+2025-07-06 09:28:13 [ERROR] output_formattter: output formatter stopped :'7'
+2025-07-06 09:30:24 [ERROR] output_formattter: output formatter stopped :'OfferRequest' object is not subscriptable
+2025-07-06 09:30:42 [ERROR] output_formattter: output formatter stopped :'OfferRequest' object is not subscriptable
+2025-07-06 09:31:54 [ERROR] output_formattter: output formatter stopped :'OfferRequest' object is not subscriptable
+2025-07-06 09:46:42 [ERROR] output_formattter: output formatter stopped :'d_21'
+2025-07-06 09:47:17 [ERROR] output_formattter: output formatter stopped :'21'
+2025-07-06 09:48:49 [ERROR] output_formattter: output formatter stopped :'21'
+2025-07-10 13:12:54 [ERROR] output_formattter: output formatter stopped :'NoneType' object is not subscriptable
+2025-07-10 13:14:15 [ERROR] output_formattter: output formatter stopped :'NoneType' object is not subscriptable
+2025-07-10 13:14:29 [ERROR] output_formattter: output formatter stopped :'invoiceNumber'
+2025-07-10 13:16:11 [ERROR] output_formattter: output formatter stopped :'invoiceNumber'
+2025-07-10 13:16:23 [ERROR] output_formattter: output formatter stopped :'invoiceNumber'
+2025-07-10 13:17:04 [ERROR] output_formattter: output formatter stopped :'invoiceNumber'
+2025-07-10 13:17:57 [ERROR] output_formattter: output formatter stopped :Invalid datetime unit in metadata string "[d]"
+2025-07-10 13:27:16 [ERROR] output_formattter: output formatter stopped :'invoiceCurrency'
+2025-07-10 13:27:57 [ERROR] output_formattter: output formatter stopped :'invoiceGrossValue'
+2025-07-10 13:31:02 [ERROR] output_formattter: output formatter stopped :'invoiceGrossValue'
+2025-07-10 13:31:37 [ERROR] output_formattter: output formatter stopped :'invoiceGrossValue'
+2025-07-10 15:48:21 [ERROR] output_formattter: output formatter stopped :'orginalPaymentDate'
+2025-07-10 15:52:38 [ERROR] output_formattter: output formatter stopped :'originalPaymentDate'
+2025-07-10 15:53:12 [ERROR] output_formattter: output formatter stopped :'originalPaymentDate'
+2025-07-10 15:53:18 [ERROR] output_formattter: output formatter stopped :'originalPaymentDate'
+2025-07-10 15:54:02 [ERROR] output_formattter: output formatter stopped :'originalPaymentDate'
+2025-07-10 15:54:45 [ERROR] output_formattter: output formatter stopped :'originalPaymentDate'
+2025-07-10 15:54:47 [ERROR] output_formattter: output formatter stopped :'originalPaymentDate'
+2025-07-10 15:55:04 [ERROR] output_formattter: output formatter stopped :'originalPaymentDate'
+2025-07-10 15:56:08 [ERROR] output_formattter: output formatter stopped :(sqlite3.IntegrityError) NOT NULL constraint failed: customerOffers.offerSentBy
+[SQL: INSERT INTO "customerOffers" ("invoiceDate", "invoiceNumber", "customerId", "creditAmount", "discountRate", "originalPaymentDate", "offeredPaymentDate", "totalInterest", "offerSentBy", "offerSentDate", "offerDecisionDate", "offerStatus", "createAt", "modifiedAt", "createdBy", "modifiedBy") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "customerOfferId"]
+[parameters: ('2025-06-12', 558414, 1, 10440.0, 125.28, '2025-07-12', '2025-06-27', 626.4, None, None, None, 'not_sent', None, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-10 16:03:35 [ERROR] output_formattter: output formatter stopped :(sqlite3.IntegrityError) NOT NULL constraint failed: customerOffers.offerSentBy
+[SQL: INSERT INTO "customerOffers" ("invoiceDate", "invoiceNumber", "customerId", "creditAmount", "discountRate", "originalPaymentDate", "offeredPaymentDate", "totalInterest", "offerSentBy", "offerSentDate", "offerDecisionDate", "offerStatus", "createAt", "modifiedAt", "createdBy", "modifiedBy") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "customerOfferId"]
+[parameters: ('2025-06-12', 558414, 1, 10440.0, 125.28, '2025-07-12', '2025-06-27', 626.4, None, None, None, 'not_sent', None, None, None, None)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-07-10 16:12:07 [ERROR] output_formattter: output formatter stopped :The truth value of a DataFrame is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
