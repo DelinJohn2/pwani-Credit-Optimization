@@ -57,6 +57,7 @@ class CreateCustomerData(BaseUpdater):
                     totalInterest=i['totalInterest'],
                     offerStatus="not_sent",
                     customerKey=i['customerKey'],
+                    discountPercentage=i['discountPercentage']
                     
                     
                     

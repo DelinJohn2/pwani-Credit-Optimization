@@ -1,7 +1,9 @@
 import pandas as pd
 import re
 import oracledb
+from utils import setup_logger
 oracledb.init_oracle_client(lib_dir=r"C:\oracle\instantclient_23_8")
+logger=setup_logger("fetch_oracle_customer")
 
 
 class DataFetcherOracleCustomer:
@@ -21,9 +23,10 @@ class DataFetcherOracleCustomer:
                 dsn=self.dsn
             )
             self.cursor = self.connection.cursor()
-            print("connection established")
+            logger.info("connection established")
         except Exception as e:
-            raise ConnectionError(f"❌ Failed to connect to Oracle DB: {e}")    
+            logger.exception(f"Failed to connect to Oracle DB: {e}")
+            raise ConnectionError(f"Failed to connect to Oracle DB: {e}")    
 
 
 
@@ -34,7 +37,12 @@ class DataFetcherOracleCustomer:
             self.connection.close()
                 
 
-   
+    def normalize(self,text):
+        if pd.isna(text):
+            return ""
+        text = text.strip().lower()
+        text = re.sub(r'[^a-z0-9]', '', text)  # remove all non-alphanumeric characters
+        return text
 
 
 
@@ -71,14 +79,22 @@ class DataFetcherOracleCustomer:
             rows = df.fetchall()
             columns = [desc[0] for desc in self.cursor.description]  # Get column n
             data = pd.DataFrame(rows, columns=columns)
-            final_data=data[['INVOICE_NUMBER','INVOICE_DATE','Customer No','INVOICE_GROSS_VALUE','INVOICE_CURRENCY_CODE']]
-            final_data=final_data[final_data['INVOICE_DATE']==date]
+            logger.info(f"fetched invoice data with shape {data.shape}")
+
+            data['customerKey']=data.apply(
+                lambda x:self.normalize(x['SHIP_TO_LOCATIONS1'])+'_'+str(x['Customer No']),axis=1
+                                            )
+            
+        
+            final_data=data[['INVOICE_NUMBER','INVOICE_DATE','Customer No','INVOICE_GROSS_VALUE','INVOICE_CURRENCY_CODE','customerKey']]
             
             cleaned=final_data.groupby(['INVOICE_NUMBER']).agg({
                                                             'INVOICE_DATE': 'first',
                                                             'Customer No': 'first',
                                                             'INVOICE_GROSS_VALUE': 'sum',
-                                                            'INVOICE_CURRENCY_CODE': 'first'
+                                                            'INVOICE_CURRENCY_CODE': 'first',
+                                                            'customerKey':'first'
+
                                                             }).reset_index()
             cleaned=cleaned.rename(columns={
                                                 'INVOICE_NUMBER': 'invoiceNumber',
@@ -87,11 +103,15 @@ class DataFetcherOracleCustomer:
                                                 'INVOICE_GROSS_VALUE': 'invoiceGrossValue',
                                                 'INVOICE_CURRENCY_CODE':'invoiceCurrencyCode'
                                             })
+            logger.info(f"sucessfully returned data data columns are {cleaned.columns} with shape {cleaned.shape}")
             return cleaned
+            
         
 
         except Exception as e:
-            raise RuntimeError(f"❌ Failed to fetch invoice data: {e}")
+            logger.exception(f"Failed to fetch invoice data: {e}")
+
+            raise RuntimeError(f"Failed to fetch invoice data: {e}")
 
         
 
@@ -100,16 +120,19 @@ class DataFetcherOracleCustomer:
 
 
     def fetch_customer_data(self,customer_nos:list):
-        customer_nos=tuple(int(i) for i in customer_nos)
+        
         try:
+            customer_no=",".join(map(str,customer_nos))
             if not self.connection:
+                logger.error("Database connection is not established.")
                 raise ConnectionError("Database connection is not established.")
 
             if not customer_nos:
+                logger.error("Customer number list is empty.")
                 raise ValueError("Customer number list is empty.")    
         
 
-
+            print(customer_nos)
             query=f'''SELECT  DISTINCT ac.CUSTOMER_CLASS_CODE "Customer Class",
                         AC.status,
             to_char(HP.CREATION_DATE, 'DD-MM-YYYY') "Creation Date",
@@ -497,7 +520,7 @@ class DataFetcherOracleCustomer:
             --AND HPS.PARTY_SITE_NAME=:SITE_NAME
             and AC.status = 'A'
             and hcsu.STATUS = 'A'
-            AND AC.CUSTOMER_NUMBER IN {customer_nos}'''
+            AND AC.CUSTOMER_NUMBER IN ({customer_no})'''
             df = self.cursor.execute(query)
             rows = df.fetchall()
             print("Sucessfully fetched data")
@@ -505,31 +528,42 @@ class DataFetcherOracleCustomer:
 
             
             data = pd.DataFrame(rows, columns=columns)
+
+            logger.info(f"fetched customer data of shape {data.shape}")
+            data['customerKey']=data.apply(
+                   lambda x : self.normalize(x['Location'])+'_'+str(x['Customer No']),axis=1
+            )
             
         
             
-            data=data[['Customer No','Customer Name','EMAIL_ADDRESS','Phone Number','Customer Type','Terms']]
-            
+            data=data[['Customer No','Customer Name','EMAIL_ADDRESS','Phone Number','Customer Type','Terms','Location','customerKey']]
+            print(data.columns)
             data = data.rename(columns={
                                             'Customer No': 'customerNumber',
                                             'Customer Name': 'name',
                                             'EMAIL_ADDRESS': 'email',
                                             'Phone Number': 'phone',
                                             'Customer Type': 'customerType',
-                                            'Terms': 'creditTerms'
+                                            'Terms': 'creditTerms',
+                                            'Location':'location'
                                         })
-            cleaned=data[data['customerNumber'].isin(customer_nos)]
-            cleaned=cleaned.groupby(['customerNumber']).agg({'name': 'first',
+            print(data.head())
+            data=data.drop_duplicates()
+            cleaned=data.groupby(['customerKey']).agg({'name': 'first',
                                             'email': 'first',
                                             'phone': 'first',
                                             'customerType': 'first',
-                                            'creditTerms': 'max'}).reset_index()
-        
+                                            'creditTerms': 'first',
+                                            'customerNumber':'first',
+                                            'location':'first'}).reset_index()
+            logger.info(f"sucessfully returned data data columns are {cleaned.columns} with shape {cleaned.shape}")
+            print(cleaned.columns)
             return cleaned
         
 
         except Exception as e:
-            raise RuntimeError(f"❌ Failed to fetch customer data: {e}")
+            logger.exception(f" Failed to fetch customer data: {e}")
+            raise RuntimeError(f"Failed to fetch customer data: {e}")
 
       
 

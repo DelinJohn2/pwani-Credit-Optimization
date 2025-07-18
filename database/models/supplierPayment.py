@@ -20,8 +20,13 @@ class SupplierPayment(SQLModel, table=True):
     invoiceNumber: str = Field(max_length=50,nullable=True)
 
     supplierId: int = Field(foreign_key="suppliers.supplierId")
+
+
     creditAmount: float = Field(default=0.0,nullable=True)
-    discountRate: float = Field(default=0.0,)
+    discountRate: float = Field(default=0.0)
+
+    discountPercentage :float 
+    
     originalPaymentDate: date
     offeredPaymentDate: date
     offerStatus: str= Field(default = "not_sent")

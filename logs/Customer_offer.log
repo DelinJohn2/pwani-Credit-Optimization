@@ -49,3 +49,5 @@
 2025-07-16 17:01:42 [ERROR] Customer_offer: output formatter stopped :unsupported operand type(s) for *: 'NoneType' and 'float'
 2025-07-16 17:03:00 [ERROR] Customer_offer: output formatter stopped :unsupported operand type(s) for *: 'NoneType' and 'float'
 2025-07-16 17:03:08 [ERROR] Customer_offer: output formatter stopped :unsupported operand type(s) for *: 'NoneType' and 'float'
+2025-07-17 22:02:09 [ERROR] Customer_offer: get_enriched_invoice_data failed: 'customerKey'
+2025-07-17 22:02:09 [ERROR] Customer_offer: output formatter stopped :'customerKey'

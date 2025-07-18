@@ -1,0 +1,2 @@
+2025-07-18 11:34:53 [ERROR] supplier_offer: output formatter stopped :'NoneType' object is not subscriptable
+2025-07-18 12:37:23 [ERROR] supplier_offer: output formatter stopped :descriptor 'strftime' for 'datetime.date' objects doesn't apply to a 'str' object

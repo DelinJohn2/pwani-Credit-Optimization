@@ -58,6 +58,7 @@ class CreateSupplierData(BaseUpdater):
 
                     creditAmount=i['invoiceGrossValue'],
                     discountRate=i['discountRate'],
+                    discountPercentage=i['discountPercentage'],
                     
                     originalPaymentDate=i['orginalPaymentDate'],
                     offeredPaymentDate=i['offeredPaymentDate'],

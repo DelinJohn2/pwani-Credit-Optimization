@@ -1,10 +1,15 @@
 from fastapi import FastAPI
-from routes.routes import router as offer_router  # Adjust the import if needed
+from routes import routes # import your router module
 
-app = FastAPI()
+app = FastAPI(
+    title="Pwani Finance Offer Calculator",
 
-app.include_router(offer_router, prefix="/offers", tags=["Offer Calculator"])
+)
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
+# Include router
+app.include_router(routes.router, prefix="/api", tags=["Offer Routes"])
+
+# Root route
+@app.get("/")
+async def root():
+    return {"message": "Pwani Finance Offer API is running"}

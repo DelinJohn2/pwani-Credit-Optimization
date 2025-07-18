@@ -18,6 +18,7 @@ class CustomerOffer(SQLModel, table=True):
     
     creditAmount: float = Field(default=0.0,nullable=True)
     discountRate: float = Field(default=0.0,)
+    discountPercentage:float
     
     originalPaymentDate: date
     offeredPaymentDate: date

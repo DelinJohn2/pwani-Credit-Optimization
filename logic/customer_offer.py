@@ -57,9 +57,7 @@ class CustomerDataManager:
         try:    
     
             invoice_df = self.oracle.fetch_invoice_data(date)
-            print(invoice_df.columns)
             customer_nos = list(set(invoice_df["customerNumber"]))
-            print(customer_nos)
             customer_data = self.ensure_customers_in_db(customer_nos)
             return invoice_df.merge(customer_data.reset_index(), on='customerKey', how='left')
         except Exception as e:
@@ -79,9 +77,8 @@ class CustomerDataManager:
             
             if date:
                 date =f'{date.strftime("%d-%m-%Y")}'
-                print(date)
             else:
-                date = (datetime.now() - relativedelta(months=1)).strftime("%d-%m-%Y")
+                date = (datetime.now() - relativedelta(months=2)).strftime("%d-%m-%Y")
             self.oracle.connect()    
             unfiltered_data = self.get_enriched_invoice_data(date) 
             invoice_nos_str=self.local.fetch_invoice_no()
@@ -92,14 +89,12 @@ class CustomerDataManager:
 
             invoice_no=[int(i) for i in invoice_nos_str]
             data = unfiltered_data[~unfiltered_data['invoiceNumber'].isin(invoice_no)]
-            
+            logger.info("processing of data started")
 
             if not data.empty:
                 data=data[data['creditTerms'].str.contains('Days Net',regex=True,na=False,case=False)]
 
-            
-
-           
+        
                 data['creditTerms'] = data['creditTerms'].apply(lambda x: int(x.split(" ")[0]))
 
                 data=data[data['creditTerms']>7]
@@ -108,26 +103,28 @@ class CustomerDataManager:
                 data['invoiceDate'] = pd.to_datetime(data['invoiceDate'])
                 
                 data['orginalPaymentDate'] = data['invoiceDate'] + pd.to_timedelta(data['creditTerms'], unit="d")
-                print(data['creditTerms'].unique())
                 data['creditAmount'] = data.apply(
                         lambda x: x['invoiceGrossValue'] * input_data['exchange_rate'] if x['invoiceCurrencyCode'] == "USD" else x['invoiceGrossValue'],
                         axis=1
                     )
                 
                 data['saved_amount']=data.apply(
-                        lambda x:(input_data.get(x['creditTerms']))*(input_data.get('cost_of_finance_per_day')/100)*x['creditAmount'],
+                        lambda x:(input_data.get(x['creditTerms'],0))*(input_data.get('cost_of_finance_per_day')/100)*x['creditAmount'],
                         axis=1
                         )
                     
                 data['max_allowed_offer'] = data['creditAmount'] * (input_data.get('max_discount_amount') / 100)
                 data['totalInterest']=data['creditTerms']*input_data.get("cost_of_finance_per_day")/100*data['creditAmount']
 
-                data['discountRate'] = np.where(
+                data['discountedAmount'] = np.where(
                         data['saved_amount'] * (input_data.get('persentage_of_discount_savings') / 100)<data['max_allowed_offer'],
                         data['saved_amount'] * (input_data.get('persentage_of_discount_savings')/ 100),
                         data['max_allowed_offer']
 
                     )
+                data['discountRate']=data['invoiceGrossValue']-data['discountedAmount']
+
+                data['discountPercentage']=(data['discountedAmount']/data['invoiceGrossValue'])*100
 
                     
                 data["offeredPaymentDate"] = data.apply(
@@ -138,7 +135,8 @@ class CustomerDataManager:
 
         
                 self.customer_creator.customer_offer_insert(data)
-                return data
+                logger.info("Succesfully inserted data into db")
+                return "Data insertion is succesfull"
             
             return "already inserted"
                         

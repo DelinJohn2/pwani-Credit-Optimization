@@ -3,6 +3,9 @@ import oracledb
 from config import oracle_config
 oracledb.init_oracle_client(lib_dir=r"C:\oracle\instantclient_23_8")
 from datetime import datetime
+from utils import setup_logger
+
+logger = setup_logger("fetch_oracle_supplier")
 
 
 
@@ -23,9 +26,10 @@ class DataFetcherOracleSupplier:
                 dsn=self.dsn
             )
             self.cursor = self.connection.cursor()
-            print("connection established")
+            logger.info("connection established")
         except Exception as e:
-            raise ConnectionError(f"❌ Failed to connect to Oracle DB: {e}")    
+            logger.exception(f"Failed to connect to Oracle DB: {e}")    
+            raise ConnectionError(f"Failed to connect to Oracle DB: {e}")    
 
 
 
@@ -43,6 +47,7 @@ class DataFetcherOracleSupplier:
     def fetch_invoice_data(self,date:str)-> pd.DataFrame:
         try:
             if not self.connection:
+                logger.error("Database connection is not established.")
                 raise ConnectionError("Database connection is not established.")    
             
             self.cursor.execute("""
@@ -101,6 +106,8 @@ class DataFetcherOracleSupplier:
             rows = df.fetchall()
             columns = [desc[0] for desc in self.cursor.description]  # Get column n
             data = pd.DataFrame(rows, columns=columns)
+            logger.info(f"fetched invoice data of shape : {data.shape}")
+
             data['invoiceUniqueKey']=data['VENDOR_ID'].astype(str)+"_"+data[' Invoice Number']
             final_data=data[['invoiceUniqueKey','Invoice Date','VENDOR_ID',' Invoice Number','Inclusive KSH']]
            
@@ -112,7 +119,9 @@ class DataFetcherOracleSupplier:
                                                 'VENDOR_ID': 'vendorId',
                                                 'Inclusive KSH':'invoiceGrossValue'
                                             })
-            return cleaned.drop_duplicates()
+            cleaned=cleaned.drop_duplicates()
+            logger.info(f"invoice supplier succesfully returned of shape: {cleaned.shape}")
+            return cleaned
             
         
 
@@ -126,12 +135,14 @@ class DataFetcherOracleSupplier:
 
 
     def fetch_supplier_data(self,vendor_ids:list) -> pd.DataFrame :
-        vendor_ids=tuple(int(i) for i in vendor_ids)
+        vendor_ids=",".join(map(str,vendor_ids))
         try:
             if not self.connection:
+                logger.error("Database connection is not established.")
                 raise ConnectionError("Database connection is not established.")
 
             if not vendor_ids:
+                logger.error("Customer number list is empty.")
                 raise ValueError("Customer number list is empty.")    
         
 
@@ -295,23 +306,23 @@ AND aps.vendor_type_lookup_code <> 'EMPLOYEE'
 --AND aps.CREATION_DATE BETWEEN NVL (:p_from_date, aps.CREATION_DATE)
 --AND NVL (:p_to_date, aps.CREATION_DATE)+1 
 and aps.LAST_UPDATED_BY = fu.USER_ID
-and aps.vendor_id in {vendor_ids}
+and aps.vendor_id in ({vendor_ids})
 --and apt.name is null --Pay Terms
 
 order by aps.segment1 """
             df = self.cursor.execute(query)
             rows = df.fetchall()
-            print("Sucessfully fetched data")
+            
             columns = [desc[0] for desc in self.cursor.description]  # Get column names
 
             
             data = pd.DataFrame(rows, columns=columns)
-            
+            logger.info(f"Sucessfully fetched supplier data of shape: {data.shape}")
         
             
             data=data[['SUPPLIER ID','SUPPLIER NAME','SUPPLIER TYPE','PAY TERMS', 'PHONE', 'EMAIL_ADDRESS']]
-            print(data.columns)
-            cleaned = data.rename(columns={
+            
+            data = data.rename(columns={
                                             'SUPPLIER ID': 'vendorId',
                                             'SUPPLIER NAME': 'supplierName',
                                             'EMAIL_ADDRESS': 'email',
@@ -319,9 +330,11 @@ order by aps.segment1 """
                                             'SUPPLIER TYPE': 'supplierType',
                                             'PAY TERMS': 'creditTerms'
                                         })
+            data=data.drop_duplicates()
             
-            print(cleaned.columns)
-            return cleaned.drop_duplicates()
+            logger.info(f"Sucessfully returned fetched supplier data of shape: {data.shape} of column :{data.columns}")
+            
+            return data
             
 
         except Exception as e:

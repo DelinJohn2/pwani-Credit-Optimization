@@ -69,9 +69,9 @@ class SupplierDataManger:
             last_date=self.local.fetch_last_invoice_date()
 
             if last_date:
-                last_date = f'{date.strftime("%d-%m-%Y")}'
+                last_date = f'{last_date.strftime("%d-%m-%Y")}'
             else:
-                last_date = (datetime.now() - relativedelta(months=1)).strftime("%d-%m-%Y")
+                last_date = (datetime.now() - relativedelta(months=2)).strftime("%d-%m-%Y")
 
             unfiltered_data = self.enriched_invoice_data(last_date)
             invoice_key = self.local.fetch_invoice_key()
@@ -83,11 +83,11 @@ class SupplierDataManger:
 
             if not data.empty:
                 data= data[data['creditTerms'].str.contains("Days Net", regex=True, na=False,case=False)]
+                
 
 
                 data['creditTerms'] = data['creditTerms'].apply(self.extract_credit_days)
-                print(data[['creditTerms', 'invoiceGrossValue']].head())
-
+                
 
 
                 data = data[data['creditTerms']>7]
@@ -95,15 +95,20 @@ class SupplierDataManger:
                 data['invoiceDate'] = pd.to_datetime(data['invoiceDate'])
                 data['orginalPaymentDate'] = data['invoiceDate'] + pd.to_timedelta(data['creditTerms'], unit="d")
 
-                data['discountRate']=data.apply(
-                    lambda x:(input_data.get(x['creditTerms'])[1]/100)*x['invoiceGrossValue'],axis=1)
+                data['discountAmount']=data.apply(
+                    lambda x:(input_data.get(x['creditTerms'],(0, 0))[1]/100)*x['invoiceGrossValue'],axis=1)
+                
+                data['discountRate']=data['invoiceGrossValue']-data['discountAmount']
+
+                data['discountPercentage']=data['creditTerms'].apply(lambda x:(input_data.get(x['creditTerms'],(0, 0))[1]))
 
                 data["offeredPaymentDate"] = data.apply(
-                    lambda x : x['orginalPaymentDate'] - pd.to_timedelta(input_data.get(x['creditTerms'])[0], unit="d"),axis=1
+                    lambda x : x['orginalPaymentDate'] - pd.to_timedelta(input_data.get(x['creditTerms'],(0, 0))[0], unit="d"),axis=1
                 )
 
                 self.supplier_creator.supplier_offer_insert(data)
-                return data
+                return "data insertion is successfull"
+            
             return "already inserted"
         
 
