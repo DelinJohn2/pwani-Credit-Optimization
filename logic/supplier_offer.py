@@ -17,6 +17,7 @@ class SupplierDataManger:
             dsn, username, password =oracle_config()
             self.engine=engine
             self.oracle=DataFetcherOracleSupplier(password,username,dsn)
+            # self.oracle = DataFetcherOracleSupplier()
             self.local =DataFetcherLocalSupplier(engine)
             self.supplier_creator=CreateSupplierData(engine)
         except Exception as e:
@@ -69,9 +70,9 @@ class SupplierDataManger:
             last_date=self.local.fetch_last_invoice_date()
 
             if last_date:
-                last_date = f'{last_date.strftime("%d-%m-%Y")}'
+                last_date =  f'{last_date.strftime("%d-%m-%Y")}'#'12-06-2023'
             else:
-                last_date = (datetime.now() - relativedelta(months=2)).strftime("%d-%m-%Y")
+                last_date = (datetime.now() - relativedelta(months=2)).strftime("%d-%m-%Y")#'12-06-2023'
 
             unfiltered_data = self.enriched_invoice_data(last_date)
             invoice_key = self.local.fetch_invoice_key()
@@ -100,14 +101,17 @@ class SupplierDataManger:
                 
                 data['discountRate']=data['invoiceGrossValue']-data['discountAmount']
 
-                data['discountPercentage']=data['creditTerms'].apply(lambda x:(input_data.get(x['creditTerms'],(0, 0))[1]))
+                data['discountPercentage']=data['creditTerms'].apply(lambda x:(input_data.get(x,(0, 0))[1]))
 
                 data["offeredPaymentDate"] = data.apply(
                     lambda x : x['orginalPaymentDate'] - pd.to_timedelta(input_data.get(x['creditTerms'],(0, 0))[0], unit="d"),axis=1
                 )
+                print("Data is being inserted")
 
                 self.supplier_creator.supplier_offer_insert(data)
+
                 return "data insertion is successfull"
+
             
             return "already inserted"
         

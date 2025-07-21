@@ -1,1 +1,71 @@
 2025-07-18 15:10:15 [INFO] fetch_oracle_supplier: connection established
+2025-07-19 12:09:03 [INFO] fetch_oracle_supplier: connection established
+2025-07-19 12:15:10 [INFO] fetch_oracle_supplier: fetched invoice data of shape : (7180, 26)
+2025-07-19 12:15:10 [INFO] fetch_oracle_supplier: invoice supplier succesfully returned of shape: (7180, 5)
+2025-07-19 12:15:32 [INFO] fetch_oracle_supplier: Sucessfully fetched supplier data of shape: (358, 47)
+2025-07-19 12:15:32 [INFO] fetch_oracle_supplier: Sucessfully returned fetched supplier data of shape: (264, 6) of column :Index(['vendorId', 'supplierName', 'supplierType', 'creditTerms', 'phone',
+       'email'],
+      dtype='object')
+2025-07-19 12:15:43 [INFO] fetch_oracle_supplier: connection established
+2025-07-19 12:22:16 [ERROR] fetch_oracle_supplier: Failed to connect to Oracle DB: ORA-12170: Cannot connect. TCP connect timeout of 20s for host 192.168.5.45 port 1606. (CONNECTION_ID=3AFK0QGkTny8GAKfrCblpQ==)
+Help: https://docs.oracle.com/error-help/db/ora-12170/
+Traceback (most recent call last):
+  File "C:\Users\delin\Documents\codes\pwani_finance\data_ingestion\fetch_oracle_supplier.py", line 23, in connect
+    self.connection = oracledb.connect(
+                      ^^^^^^^^^^^^^^^^^
+  File "C:\Users\delin\Documents\codes\pwani_finance\financePwani\Lib\site-packages\oracledb\connection.py", line 1276, in connect
+    return conn_class(dsn=dsn, pool=pool, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\delin\Documents\codes\pwani_finance\financePwani\Lib\site-packages\oracledb\connection.py", line 653, in __init__
+    impl.connect(params_impl, pool_impl)
+  File "src/oracledb/impl/thick/connection.pyx", line 510, in oracledb.thick_impl.ThickConnImpl.connect
+  File "src/oracledb/impl/thick/utils.pyx", line 474, in oracledb.thick_impl._raise_from_info
+oracledb.exceptions.DatabaseError: ORA-12170: Cannot connect. TCP connect timeout of 20s for host 192.168.5.45 port 1606. (CONNECTION_ID=3AFK0QGkTny8GAKfrCblpQ==)
+Help: https://docs.oracle.com/error-help/db/ora-12170/
+2025-07-19 12:22:55 [ERROR] fetch_oracle_supplier: Failed to connect to Oracle DB: ORA-12170: Cannot connect. TCP connect timeout of 20s for host 192.168.5.45 port 1606. (CONNECTION_ID=NXil9DCBSYivia9KDAMX3w==)
+Help: https://docs.oracle.com/error-help/db/ora-12170/
+Traceback (most recent call last):
+  File "C:\Users\delin\Documents\codes\pwani_finance\data_ingestion\fetch_oracle_supplier.py", line 23, in connect
+    self.connection = oracledb.connect(
+                      ^^^^^^^^^^^^^^^^^
+  File "C:\Users\delin\Documents\codes\pwani_finance\financePwani\Lib\site-packages\oracledb\connection.py", line 1276, in connect
+    return conn_class(dsn=dsn, pool=pool, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\delin\Documents\codes\pwani_finance\financePwani\Lib\site-packages\oracledb\connection.py", line 653, in __init__
+    impl.connect(params_impl, pool_impl)
+  File "src/oracledb/impl/thick/connection.pyx", line 510, in oracledb.thick_impl.ThickConnImpl.connect
+  File "src/oracledb/impl/thick/utils.pyx", line 474, in oracledb.thick_impl._raise_from_info
+oracledb.exceptions.DatabaseError: ORA-12170: Cannot connect. TCP connect timeout of 20s for host 192.168.5.45 port 1606. (CONNECTION_ID=NXil9DCBSYivia9KDAMX3w==)
+Help: https://docs.oracle.com/error-help/db/ora-12170/
+2025-07-19 12:25:53 [ERROR] fetch_oracle_supplier: Failed to connect to Oracle DB: ORA-12170: Cannot connect. TCP connect timeout of 20s for host 192.168.5.45 port 1606. (CONNECTION_ID=D8Ux5FU/QeeP7VkEDiAyew==)
+Help: https://docs.oracle.com/error-help/db/ora-12170/
+Traceback (most recent call last):
+  File "C:\Users\delin\Documents\codes\pwani_finance\data_ingestion\fetch_oracle_supplier.py", line 23, in connect
+    self.connection = oracledb.connect(
+                      ^^^^^^^^^^^^^^^^^
+  File "C:\Users\delin\Documents\codes\pwani_finance\financePwani\Lib\site-packages\oracledb\connection.py", line 1276, in connect
+    return conn_class(dsn=dsn, pool=pool, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\delin\Documents\codes\pwani_finance\financePwani\Lib\site-packages\oracledb\connection.py", line 653, in __init__
+    impl.connect(params_impl, pool_impl)
+  File "src/oracledb/impl/thick/connection.pyx", line 510, in oracledb.thick_impl.ThickConnImpl.connect
+  File "src/oracledb/impl/thick/utils.pyx", line 474, in oracledb.thick_impl._raise_from_info
+oracledb.exceptions.DatabaseError: ORA-12170: Cannot connect. TCP connect timeout of 20s for host 192.168.5.45 port 1606. (CONNECTION_ID=D8Ux5FU/QeeP7VkEDiAyew==)
+Help: https://docs.oracle.com/error-help/db/ora-12170/
+2025-07-19 12:26:34 [INFO] fetch_oracle_supplier: connection established
+2025-07-19 12:31:20 [INFO] fetch_oracle_supplier: connection established
+2025-07-21 12:56:00 [ERROR] fetch_oracle_supplier: Failed to connect to Oracle DB: ORA-12560: Database communication protocol error.
+Help: https://docs.oracle.com/error-help/db/ora-12560/
+Traceback (most recent call last):
+  File "C:\Users\delin\Documents\codes\pwani_finance\data_ingestion\fetch_oracle_supplier.py", line 23, in connect
+    self.connection = oracledb.connect(
+                      ^^^^^^^^^^^^^^^^^
+  File "C:\Users\delin\Documents\codes\pwani_finance\financePwani\Lib\site-packages\oracledb\connection.py", line 1276, in connect
+    return conn_class(dsn=dsn, pool=pool, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\delin\Documents\codes\pwani_finance\financePwani\Lib\site-packages\oracledb\connection.py", line 653, in __init__
+    impl.connect(params_impl, pool_impl)
+  File "src/oracledb/impl/thick/connection.pyx", line 510, in oracledb.thick_impl.ThickConnImpl.connect
+  File "src/oracledb/impl/thick/utils.pyx", line 474, in oracledb.thick_impl._raise_from_info
+oracledb.exceptions.DatabaseError: ORA-12560: Database communication protocol error.
+Help: https://docs.oracle.com/error-help/db/ora-12560/

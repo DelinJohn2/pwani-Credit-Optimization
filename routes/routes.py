@@ -13,7 +13,6 @@ class customerOfferRequest(BaseModel):
     cost_of_finance_per_day: float
     max_discount_amount: float
     persentage_of_discount_savings: float
-    minimum_threshold: float
     d_14: int
     d_21: int
     d_30: int
@@ -65,7 +64,7 @@ async def calculate_offer_supplier(request: SuppplierOfferRequest):
             int(key.split('_')[1]): value
             for key, value in input_data.items()
         }
-
+        print(formatted_data)
        
         fetcher = SupplierDataManger(engine)
         result = fetcher.offer_processor(formatted_data)

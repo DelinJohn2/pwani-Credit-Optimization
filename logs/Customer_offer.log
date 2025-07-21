@@ -51,3 +51,30 @@
 2025-07-16 17:03:08 [ERROR] Customer_offer: output formatter stopped :unsupported operand type(s) for *: 'NoneType' and 'float'
 2025-07-17 22:02:09 [ERROR] Customer_offer: get_enriched_invoice_data failed: 'customerKey'
 2025-07-17 22:02:09 [ERROR] Customer_offer: output formatter stopped :'customerKey'
+2025-07-18 16:11:54 [ERROR] Customer_offer: output formatter stopped :Failed to connect to Oracle DB: ORA-12170: Cannot connect. TCP connect timeout of 20s for host 192.168.5.45 port 1606. (CONNECTION_ID=0JM3RhLwRsWM1pgSojq2MQ==)
+Help: https://docs.oracle.com/error-help/db/ora-12170/
+2025-07-18 17:23:02 [ERROR] Customer_offer: get_enriched_invoice_data failed: Failed to fetch invoice data: DPY-4011: the database or network closed the connection
+DPI-1080: connection was closed by ORA-03113
+ORA-03113: end-of-file on communication channel
+Process ID: 2163902
+Session ID: 67 Serial number: 30878
+Help: https://docs.oracle.com/error-help/db/ora-03113/
+2025-07-18 17:23:02 [ERROR] Customer_offer: output formatter stopped :Failed to fetch invoice data: DPY-4011: the database or network closed the connection
+DPI-1080: connection was closed by ORA-03113
+ORA-03113: end-of-file on communication channel
+Process ID: 2163902
+Session ID: 67 Serial number: 30878
+Help: https://docs.oracle.com/error-help/db/ora-03113/
+2025-07-19 11:40:54 [ERROR] Customer_offer: output formatter stopped :Failed to connect to Oracle DB: ORA-12170: Cannot connect. TCP connect timeout of 20s for host 192.168.5.45 port 1606. (CONNECTION_ID=vgythZkCR0ijj0AbXMTKJQ==)
+Help: https://docs.oracle.com/error-help/db/ora-12170/
+2025-07-19 12:08:54 [ERROR] Customer_offer: ensure_customers_in_db failed: Failed to fetch customer data: ORA-00904: "NONE": invalid identifier
+Help: https://docs.oracle.com/error-help/db/ora-00904/
+2025-07-19 12:08:54 [ERROR] Customer_offer: get_enriched_invoice_data failed: Failed to fetch customer data: ORA-00904: "NONE": invalid identifier
+Help: https://docs.oracle.com/error-help/db/ora-00904/
+2025-07-19 12:08:54 [ERROR] Customer_offer: output formatter stopped :Failed to fetch customer data: ORA-00904: "NONE": invalid identifier
+Help: https://docs.oracle.com/error-help/db/ora-00904/
+2025-07-21 13:14:27 [ERROR] Customer_offer: output formatter stopped :'DataFetcherOracleCustomer' object has no attribute 'connect'
+2025-07-21 13:15:08 [ERROR] Customer_offer: get_enriched_invoice_data failed: name 're' is not defined
+2025-07-21 13:15:08 [ERROR] Customer_offer: output formatter stopped :name 're' is not defined
+2025-07-21 13:15:36 [INFO] Customer_offer: processing of data started
+2025-07-21 13:15:36 [INFO] Customer_offer: Succesfully inserted data into db
